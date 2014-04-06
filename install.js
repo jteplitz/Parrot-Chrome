@@ -110,15 +110,16 @@
           
           console.log("done", data);
           if (data.appInstalled){
-            document.getElementById("text").innerText = "You're ready to go. Just right click on selected text and hit send to Android. :)";
+            document.getElementById("text").innerText = "You're ready to go. Just right click on selected text and hit copy to Android.";
           } else {
             document.getElementById("text").innerText = "You're almost there. Install the app on your phone first.";
           }
+          document.getElementById("logo").style.display = "block";
+          document.getElementById("spinner").style.display = "none";
         });
       });
     });
   };
 
   getAuthToken();
-
 }());
