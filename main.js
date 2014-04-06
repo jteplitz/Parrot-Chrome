@@ -2,7 +2,7 @@
 (function(){
   "use strict";
 
-  var sendMessage,
+  var sendMessage, sendToServer,
       makeRequest, stringify, stringifyPrimitive, escape,
 
       apiHost = "https://clipsync.herokuapp.com",
@@ -10,12 +10,9 @@
       userId = null;
 
   // check for install
-  chrome.storage.sync.get("id", function(err, id){
-    if (err){
-      console.log("Storage error", err);
-    }
-    if (id){
-      userId = id;
+  chrome.storage.sync.get("id", function(data){
+    if (data.id){
+      userId = data.id;
     } else {
       chrome.tabs.create({url: "install.html"});
     }
@@ -94,6 +91,26 @@
 
   sendMessage = function(info){
     var message = info.selectionText;
+    if (userId === null){
+      chrome.storage.sync.get("id", function(data){
+        if (data.id){
+          userId = data.id;
+          sendToServer(message);
+        }
+      });
+    } else {
+      sendToServer(message);
+    }
+  };
+
+  sendToServer = function(message){
+    var url = apiHost + "/b/message";
+    makeRequest(url, "POST", {google_id: userId, message: message}, null, function(err, data){
+      if (err){
+        return console.log("server error", err);
+      }
+      return console.log("done", data);
+    });
   };
 
   chrome.contextMenus.create({"title": "Copy to Android", contexts: ["selection"],

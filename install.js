@@ -94,7 +94,9 @@
         var id = data.id;
 
         // save their id
-        chrome.storage.sync.set({"id": data.id});
+        chrome.storage.sync.set({"id": data.id}, function(err){
+          console.log("error", err);
+        });
 
         // register the browser
         var url = apiHost + "/b/register";
