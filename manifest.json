@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+
+  "name": "Parrot",
+  "description": "Sync your android clipboard.",
+  "version": "1.0",
+  
+  "permissions": [
+    "contextMenus",
+    "identity",
+    "storage",
+    "https://*.googleapis.com/",
+    "https://clipsync.herokuapp.com/"
+  ],
+  "background": {
+    "scripts": ["main.js"]
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr8SGTee+NZwd9aCZZaRv3a30kemSrqOb94weqvKj/x3oxh19d3bb1znQ2A+3L8g0adeSzaJeaMTupvJCqg7pQrmXeOexQv0AiK0f9pHku4OcVwApHP+GRswC4uqzLCVQ09jMqzVH0jnoVOjo7akrMZLT52vQpuARl9+t7tiB11v9ckr3ChW41Oc611Eqf2yJzqb4+piZEPC7BNo46yFJiNx0AJvNFHgN9bDDLgyE1vwOQOBskbA10Z+OHh+MymyCkKxRK2Q8SuSailW/R2XREZCYmw0J1Feur4iNY/YrPdTnd0Q9sGHGn0pr8nYlFiuFNCvEIuVrJSMOunElp6PM/wIDAQAB",
+  "oauth2": {
+    "client_id": "149328206402-n63bvae91c23aluu1u099d0snsdrm51g.apps.googleusercontent.com",
+    "scopes": ["profile"]
+  },
+
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png"
+  }
+}
